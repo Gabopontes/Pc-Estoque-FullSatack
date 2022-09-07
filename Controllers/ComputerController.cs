@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PcEstoque.Data;
 using PcEstoque.Models;
@@ -16,8 +17,8 @@ namespace PcEstoque.Controllers
             _pcEstoqueContext = pcEstoqueContext;
         }
 
-        [HttpGet]
 
+        [HttpGet]
         public async Task<IActionResult> GetAllComputers()
         {
             var computers = await _pcEstoqueContext.Computers.ToListAsync();
@@ -41,12 +42,12 @@ namespace PcEstoque.Controllers
         public async Task<IActionResult> GetComputer([FromRoute] Guid id)
         {
             var computer = await _pcEstoqueContext.Computers.FirstOrDefaultAsync(x => x.Id == id);
-        
-            if(computer == null)
+
+            if (computer == null)
             {
                 return NotFound();
             }
-            return Ok(computer); 
+            return Ok(computer);
         }
 
         [HttpPut]
@@ -65,9 +66,9 @@ namespace PcEstoque.Controllers
             computer.Marca = updateComputerRequest.Marca;
             computer.ModeloPlaca = updateComputerRequest.ModeloPlaca;
             computer.MemoriaRAM = updateComputerRequest.MemoriaRAM;
-            computer.DiscoRigido= updateComputerRequest.DiscoRigido;
-            computer.Processador=updateComputerRequest.Processador; ;
-            computer.VelocidadeProce=updateComputerRequest.VelocidadeProce;
+            computer.DiscoRigido = updateComputerRequest.DiscoRigido;
+            computer.Processador = updateComputerRequest.Processador; ;
+            computer.VelocidadeProce = updateComputerRequest.VelocidadeProce;
 
             await _pcEstoqueContext.SaveChangesAsync();
 
@@ -79,17 +80,17 @@ namespace PcEstoque.Controllers
         public async Task<IActionResult> DeleteComputer([FromRoute] Guid id)
         {
             var computer = await _pcEstoqueContext.Computers.FindAsync(id);
-            if(computer == null)
+            if (computer == null)
             {
                 return NotFound();
             }
             _pcEstoqueContext.Computers.Remove(computer);
             await _pcEstoqueContext.SaveChangesAsync();
-            
+
             return Ok(computer);
         }
 
     }
-   
+
 
 }
