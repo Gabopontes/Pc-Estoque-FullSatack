@@ -37,7 +37,7 @@ namespace PcEstoque.Controllers
             return Ok(computerRequest);
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("{id:Guid}")]
         public async Task<IActionResult> GetComputer([FromRoute] Guid id)
         {
