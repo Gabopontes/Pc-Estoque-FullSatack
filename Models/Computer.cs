@@ -1,7 +1,10 @@
-﻿namespace PcEstoque.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PcEstoque.Models
 {
     public class Computer
     {
+        [Key]
         public Guid Id { get; set; }
         public string Marca { get; set; }
         public string ModeloPlaca { get; set; }
