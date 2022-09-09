@@ -1,0 +1,39 @@
+<div class="container my-5">
+    <h1 class="mb-3">Computadores</h1>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label" style="text-align: right;">Pesquisar</label>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="searchValue" class="form-control" id="search" />
+        </div>
+
+    </div>
+    <table class="table" *ngIf="computers && computers.length > 0">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marca</th>
+                <th>Placa Mãe</th>
+                <th>Memoria RAM</th>
+                <th>Armazenamento</th>
+                <th>Processador</th>
+                <th>Velocidade</th>
+                <th> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let Computer of computers | searchfilter: searchValue">
+                <td>{{Computer.id}}</td>
+                <td>{{Computer.marca}}</td>
+                <td>{{Computer.modeloPlaca}}</td>
+                <td>{{Computer.memoriaRAM}}</td>
+                <td>{{Computer.discoRigido}}</td>
+                <td>{{Computer.processador}}</td>
+                <td>{{Computer.velocidadeProce}}</td>
+                <td><a [routerLink]="[ '/computers','edit',Computer.id]">Ver</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!computers || computers.length <= 0">Nenhum Computador Encontrado</p>
+
+</div>

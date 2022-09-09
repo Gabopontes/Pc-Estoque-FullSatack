@@ -1,0 +1,46 @@
+<div class="container my-5">
+    <h1 class="mb-3">Editar Computador</h1>
+
+    <div class="row">
+        <div class="col-6">
+            <form #form="ngForm" (ngSubmit)="updateComputer()">
+                <div class="mb-3">
+                    <label for="id" class="form-label">Identificação</label>
+                    <input type="text" class="form-control" id="id" name="id" readonly [(ngModel)]="computerDetails.id">
+                </div>
+                <div class="mb-3">
+                    <label for="marca" class="form-label">Marca do Computador</label>
+                    <input type="text" class="form-control" id="marca" name="marca" [(ngModel)]="computerDetails.marca">
+                </div>
+                <div class="mb-3">
+                    <label for="modeloPlaca" class="form-label">Placa mãe</label>
+                    <input type="text" class="form-control" id="modeloPlaca" name="modeloPlaca"
+                        [(ngModel)]="computerDetails.modeloPlaca">
+                </div>
+                <div class="mb-3">
+                    <label for="memoriaRAM" class="form-label">Memoria RAM(Gb)</label>
+                    <input type="number" class="form-control" id="memoriaRAM" name="memoriaRAM"
+                        [(ngModel)]="computerDetails.memoriaRAM">
+                </div>
+                <div class="mb-3">
+                    <label for="discoRigido" class="form-label">Armazenamento</label>
+                    <input type="number" class="form-control" id="discoRigido" name="discoRigido"
+                        [(ngModel)]="computerDetails.discoRigido">
+                </div>
+                <div class="mb-3">
+                    <label for="processador" class="form-label">Processador</label>
+                    <input type="text" class="form-control" id="processador" name="processador"
+                        [(ngModel)]="computerDetails.processador">
+                </div>
+                <div class="mb-3">
+                    <label for="velocidadeProce" class="form-label">Velocidade(Hz)</label>
+                    <input type="number" class="form-control" id="velocidadeProce" name="velocidadeProce"
+                        [(ngModel)]="computerDetails.velocidadeProce">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-danger"
+                    (click)="deleteComputer(computerDetails.id)">Excluir</button>
+            </form>
+        </div>
+    </div>
+</div>
